@@ -1,0 +1,25 @@
+how do I start building  Pocker game from scarch
+
+qustions I need to  ask : 
+
+what are the tecks I am going to use 
+how the app will look like? pages , visability
+what are the enettis in DB ? 
+
+
+steps: 
+start with server: 
+	Objects you cerating with functional in js 
+	test the game on the server side 
+	when its working , you are moving to client
+	
+	
+
+server:
+	Player : {name , hand}
+	card : {value , symbol}
+	Game : { [players] , pack , turn }
+	Pack : {cards}
+	Hand : {cards} ??? 
+	
+
