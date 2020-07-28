@@ -1,7 +1,7 @@
 import Deck from "./deck.js"
 import Player from "./player";
 import TableCards from "./tableCards.js";
-import { handRanks, getVal, getHand, getTableHand ,printFullHand} from "./util.js";
+import { handRanks, getVal, getHand, getTableHand, printFullHand,arrangeHand } from "./util.js";
 
 
 
@@ -37,13 +37,8 @@ class Game {
     await this.flop()
   }
 
-  //for now check only 1 hand
-  arrangeHand(){
-    let fullHand = [... this.players[0].hand, ...this.tableCards.cards]
-    return fullHand.sort((c1,c2)=>getVal(c1)-getVal(c2))
-  }
 
-  myInit(){
+  myInit() {
     this.players[0].hand = getHand()
     this.tableCards.cards = getTableHand()
 
@@ -57,12 +52,20 @@ class Game {
     // await this.flop()
     // await this.turn()
     // await this.river()
-
     this.myInit()
-    let fullHand = this.arrangeHand()
+    debugger
+    this.checkHand()
+
+  }
+
+  checkHand() {
+    // let fullHand = this.arrangeHand()
+    let fullHand = arrangeHand(1)
+
     // printFullHand(fullHand)
-    let isIt = handRanks.straight_Flush(fullHand)
-    console.log(isIt)
+    // let isIt = handRanks.straight_Flush(fullHand, 1)
+    // console.log(isIt)
+
   }
 
   //=============

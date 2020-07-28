@@ -1,18 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
+  
+
       {
-        "name": "Launch deck.js via nodemon",
         "type": "node",
         "request": "launch",
-        "runtimeExecutable": "nodemon",
-        "program": "${workspaceFolder}/src/deck.js",
-        "console": "integratedTerminal",
-        "port": 9229,
-        "skipFiles": [
-          "${workspaceFolder}/node_modules/**/*.js",
-          "${workspaceFolder}/dist/**/*.js"
-        ]
+        "name": "babel-nodemon",
+
       }
     ]
   }
