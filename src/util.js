@@ -17,9 +17,6 @@ async function splitCards(deckId, numOfCards) {
     return res.data
 }
 
-function compareCards(card1, card2) {
-
-}
 
 //for now check only 1 hand
 function arrangeHand(playerHand, tableCards, ace = 0) {
@@ -29,6 +26,13 @@ function arrangeHand(playerHand, tableCards, ace = 0) {
 
 }
 
+
+function getHandScore(fullHand){
+    for (const [key,val] of handRanks) {
+        if(handRanks[key](fullHand) === true)
+        
+    }   
+}
 // ATTENTION !!!
 // before getting into those functions , hand have to be sorted
 // some of those  functino maybe call twice because val of ACE can change 
@@ -89,6 +93,36 @@ let handRanks = {
     three_of_a_kind: function (hand) {
         let item = hand.shift()
         return three_of_a_kind_helper(hand, item, 1)
+    },
+    two_pairs: function (hand) {
+        let counter = 0
+        for (let i = 0; i < hand.length - 1; i++) {
+            //11233
+            if (hand[i].value === hand[i + 1].value) counter++
+
+        }
+        return counter === 2
+    },
+    one_pair: function (hand) {
+        // can be a two_pair but there will be a two pair check before
+        let counter = 0
+        for (let i = 0; i < hand.length - 1; i++) {
+            if (hand[i].value === hand[i + 1].value){
+                counter++
+                break;
+            } 
+        }
+        return counter === 1
+    },
+    no_pair:function(hand){
+        let counter = 0
+        for (let i = 0; i < hand.length - 1; i++) {
+            if (hand[i].value === hand[i + 1].value){
+                counter++
+                break;
+            } 
+        }
+        return counter === 0 
     }
 }
 
@@ -103,6 +137,8 @@ function three_of_a_kind_helper(hand, item, counter) {
     item = hand.shift()
     return three_of_a_kind_helper(hand, item, counter)
 }
+
+
 
 const cardVal = {
     "2": [2, 2],
@@ -171,5 +207,6 @@ function printFullHand(fullHand) {
 }
 
 
-export { getDeckData, splitCards, handRanks, getVal, getTableHand, getHand, printFullHand, arrangeHand }
+
+export { getDeckData, splitCards, handRanks, getVal, getTableHand, getHand, printFullHand, arrangeHand ,getHandScore}
 

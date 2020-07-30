@@ -1,14 +1,13 @@
-import Deck from "./deck.js"
 import Player from "./player";
+import Deck from "./deck.js"
 import TableCards from "./tableCards.js";
-import { handRanks, getVal, getHand, getTableHand, printFullHand,arrangeHand } from "./util.js";
+import { handRanks, getVal, getHand, getTableHand, printFullHand, arrangeHand ,getHandScore} from "./util.js";
 
 
-
-class Game {
+export default class Game {
   constructor() {
-    this.deck
     this.players
+    this.deck
     this.tableCards
   }
 
@@ -53,7 +52,6 @@ class Game {
     // await this.turn()
     // await this.river()
     this.myInit()
-    debugger
     this.checkHand()
 
   }
@@ -61,8 +59,7 @@ class Game {
   checkHand() {
     // let fullHand = this.arrangeHand()
     let fullHand = arrangeHand(1)
-
-    // printFullHand(fullHand)
+    let score = getHandScore(fullHand)
     // let isIt = handRanks.straight_Flush(fullHand, 1)
     // console.log(isIt)
 
@@ -73,13 +70,13 @@ class Game {
 }
 
 
-(async () => {
-  let game = new Game()
-  await game.startGame()
+// (async () => {
+//   let game = new Game()
+//   await game.startGame()
 
-  game.print()
+//   game.print()
 
-})()
+// })()
 
 // export default function handler(req, res) {
 //   // Get data from your database
