@@ -14,7 +14,7 @@
     "@babel/register": "^7.10.5",
     "chai": "^4.2.0",
     "eslint": "^7.5.0",
-    "mocha": "^8.0.1"
+    "mocha": "^8.4.0"
   },
   "scripts": {
     "debug": "nodemon ./src/game.js --exec babel-node",
